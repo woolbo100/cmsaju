@@ -100,7 +100,7 @@ export default function Home() {
                     alt="천명갤러리의 작품처럼 표현된 운명의 수묵 원형"
                     fill
                     priority
-                    className="object-contain opacity-90 mix-blend-multiply"
+                    className="enso-gold-foil object-contain opacity-90 mix-blend-multiply"
                   />
                 </motion.div>
               </div>
