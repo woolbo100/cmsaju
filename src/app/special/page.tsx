@@ -42,7 +42,22 @@ export default function SpecialExhibition() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8F5F0] pt-64 pb-60 px-8 overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden bg-[#F8F5F0]">
+      {/* Background Layer */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="hero-paper absolute inset-0" />
+        <div className="hero-landscape-overlay absolute inset-0">
+          <Image
+            src="/image/main4.png"
+            alt="특별전 배경"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+        </div>
+      </div>
+
+      <div className="relative z-10 pt-64 pb-60 px-8">
       <AnimatePresence mode="wait">
         {!selectedExhib ? (
           <motion.div 
