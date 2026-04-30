@@ -39,7 +39,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="hero-stage relative isolate min-h-screen overflow-hidden bg-[var(--color-hanji)] pt-32">
+      <section className="hero-stage relative isolate min-h-screen overflow-hidden bg-[var(--color-hanji)] pt-24">
         <div className="pointer-events-none absolute inset-0">
           <div className="hero-paper absolute inset-0" />
           <div className="hero-landscape-overlay absolute inset-0">
@@ -70,8 +70,8 @@ export default function Home() {
           <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[rgba(248,245,240,1)] via-[rgba(248,245,240,0.6)] to-transparent" />
         </div>
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-8rem)] max-w-7xl flex-col px-6 pb-16 pt-12 sm:px-8 lg:px-12">
-          <div className="flex flex-1 flex-col items-center justify-center">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-6rem)] max-w-7xl flex-col px-6 pb-16 pt-8 sm:px-8 lg:px-12">
+          <div className="hero-content-frame flex flex-1 flex-col items-center justify-center p-8 sm:p-12 lg:p-16">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}

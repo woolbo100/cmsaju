@@ -85,7 +85,7 @@ export default function GalleryOne() {
   const guardianDetails = getElementDetails(sajuData.missingElement as FiveElements);
 
   return (
-    <div className="mx-auto max-w-7xl px-6 pb-40 pt-40 sm:px-8 lg:px-12">
+    <div className="mx-auto max-w-7xl px-6 pb-40 pt-52 sm:px-8 lg:px-12">
       <div className="space-y-20">
         {/* Step 1: Main (Product Selection) */}
         {view === "main" && (
