@@ -44,8 +44,8 @@ export default function Home() {
           <div className="hero-paper absolute inset-0" />
           <div className="hero-landscape-overlay absolute inset-0">
             <Image
-              src="/assets/bg_landscape.png"
-              alt=""
+              src="/image/main1.png"
+              alt="천명갤러리 메인 배경"
               fill
               priority
               className="object-cover object-center"

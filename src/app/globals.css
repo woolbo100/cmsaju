@@ -149,18 +149,17 @@ a {
 }
 
 .hero-paper {
-  background-image:
-    linear-gradient(rgba(250, 247, 239, 0.9), rgba(248, 245, 240, 0.95)),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5), transparent 70%);
+  background-image: 
+    linear-gradient(rgba(250, 247, 239, 0.4), rgba(248, 245, 240, 0.6)),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.3), transparent 70%);
 }
 
 .hero-landscape-overlay {
   position: absolute;
   inset: 0;
-  opacity: 0.12;
-  mix-blend-mode: multiply;
+  opacity: 0.85;
+  mix-blend-mode: normal;
   pointer-events: none;
-  filter: contrast(1.05) brightness(1.1) grayscale(0.4);
 }
 
 .hero-art-frame {
