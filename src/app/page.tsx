@@ -70,7 +70,7 @@ export default function Home() {
           <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[rgba(248,245,240,1)] via-[rgba(248,245,240,0.6)] to-transparent" />
         </div>
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-6rem)] max-w-7xl flex-col px-6 pb-16 pt-8 sm:px-8 lg:px-12">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-6rem)] max-w-7xl flex-col px-6 pb-16 pt-0 sm:px-8 lg:px-12">
           <div className="hero-content-frame flex flex-1 flex-col items-center justify-center p-8 sm:p-12 lg:p-16">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -90,17 +90,12 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 40 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{
-                y: -6,
-                boxShadow: "0 35px 80px rgba(90, 73, 38, 0.15), 0 0 40px rgba(197, 160, 89, 0.12)",
-              }}
-              className="hero-art-frame mt-16 w-full max-w-[22rem] sm:max-w-[26rem] lg:mt-20 lg:max-w-[30rem]"
+              className="relative mt-16 w-full max-w-[22rem] sm:max-w-[26rem] lg:mt-20 lg:max-w-[30rem]"
             >
-              <div className="hero-art-inner relative aspect-square overflow-hidden">
-                <div className="hero-art-paper absolute inset-0" />
+              <div className="relative aspect-square overflow-hidden">
                 <motion.div
                   animate={{ y: [0, -5, 0] }}
                   transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
@@ -114,7 +109,6 @@ export default function Home() {
                     className="object-contain opacity-90 mix-blend-multiply"
                   />
                 </motion.div>
-                <div className="hero-ink-ring absolute inset-[8%]" />
               </div>
               <div className="hero-stamp absolute -bottom-5 -right-5 flex items-center gap-2 px-4 py-2.5 shadow-lg">
                 <div className="relative h-8 w-8">
