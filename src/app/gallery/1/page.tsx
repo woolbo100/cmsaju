@@ -133,216 +133,217 @@ export default function GalleryOne() {
                       fill
                       className="object-cover grayscale-[0.2] opacity-80"
                     />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(248,245,240,0.8)] to-transparent" />
-                  <div className="absolute bottom-6 left-8">
-                    <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-[rgba(62,54,42,0.5)]">Entrance</p>
-                    <p className="mt-1 text-xl tracking-[0.1em] text-[var(--color-ink-soft)]">전시관 입장</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[rgba(248,245,240,0.8)] to-transparent" />
+                    <div className="absolute bottom-6 left-8">
+                      <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-[rgba(62,54,42,0.5)]">Entrance</p>
+                      <p className="mt-1 text-xl tracking-[0.1em] text-[var(--color-ink-soft)]">전시관 입장</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section className="grid gap-8 lg:grid-cols-2">
+                <motion.div
+                  whileHover={{ y: -8 }}
+                  className="gallery-card flex flex-col justify-between rounded-[2.2rem] border border-[rgba(197,160,89,0.18)] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(89,71,36,0.12)]"
+                >
+                  <div className="space-y-6">
+                    <p className="font-sans text-[11px] uppercase tracking-[0.45em] text-[rgba(128,97,36,0.6)]">Single Exhibition</p>
+                    <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">단일 운세 리포트</h2>
+                    <p className="max-w-sm text-[16px] leading-8 text-[rgba(62,54,42,0.65)]">
+                      재물, 연애, 직장 등 현재 가장 큰 에너지를 쓰고 있는 한 가지 주제에 대해 깊이 있는 통찰을 제공합니다.
+                    </p>
+                    <p className="font-sans text-2xl tracking-[0.1em] text-[var(--color-gold)]">₩4,900</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setView("single-select")}
+                    className="hero-cta mt-12 flex w-full items-center justify-center gap-4 rounded-full py-5 transition-all"
+                  >
+                    <span className="font-sans text-[12px] uppercase tracking-[0.4em]">전시 선택하기</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ y: -8 }}
+                  className="gallery-card relative flex flex-col justify-between rounded-[2.2rem] border border-[rgba(197,160,89,0.3)] bg-[rgba(255,251,244,0.4)] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(89,71,36,0.14)]"
+                >
+                  <div className="absolute right-10 top-10 rounded-full border border-[rgba(197,160,89,0.4)] bg-[rgba(197,160,89,0.1)] px-4 py-1.5">
+                    <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-[var(--color-gold)]">Signature</span>
+                  </div>
+                  <div className="space-y-6">
+                    <p className="font-sans text-[11px] uppercase tracking-[0.45em] text-[rgba(128,97,36,0.6)]">Total Collection</p>
+                    <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">토탈 운세 리포트</h2>
+                    <p className="max-w-sm text-[16px] leading-8 text-[rgba(62,54,42,0.65)]">
+                      삶의 다섯 가지 대운과 올해의 월별 흐름, 중요한 변화의 시기를 한 눈에 읽는 종합 큐레이션 전시입니다.
+                    </p>
+                    <p className="font-sans text-2xl tracking-[0.1em] text-[var(--color-gold)]">₩9,900</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setView("total-summary")}
+                    className="hero-cta mt-12 flex w-full items-center justify-center gap-4 rounded-full py-5 transition-all"
+                  >
+                    <span className="font-sans text-[12px] uppercase tracking-[0.4em]">전체 흐름 보기</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </motion.div>
+              </section>
+            </motion.div>
+          )}
+
+          {/* Step 2: Single Selection */}
+          {view === "single-select" && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-16"
+            >
+              <div className="flex flex-col items-center justify-between gap-6 border-b border-[rgba(197,160,89,0.15)] pb-10 sm:flex-row">
+                <div className="space-y-3">
+                  <button 
+                    onClick={() => setView("main")}
+                    className="font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)] hover:text-[var(--color-gold)] transition-colors"
+                  >
+                    ← 돌아가기
+                  </button>
+                  <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">리포트 종류 선택</h2>
+                </div>
+                <p className="font-sans text-xl tracking-[0.1em] text-[var(--color-gold)]">단일 리포트 · ₩4,900</p>
+              </div>
+
+              <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+                <div className="space-y-4">
+                  {fortuneOptions.map((option) => {
+                    const active = selectedFortune === option.id;
+                    return (
+                      <button
+                        key={option.id}
+                        onClick={() => setSelectedFortune(option.id)}
+                        className={`group w-full rounded-[1.8rem] border p-7 text-left transition-all duration-300 ${
+                          active
+                            ? "border-[rgba(197,160,89,0.6)] bg-[rgba(255,251,244,0.8)] shadow-[0_20px_40px_rgba(89,71,36,0.06)]"
+                            : "border-[rgba(197,160,89,0.15)] bg-white/40 hover:border-[rgba(197,160,89,0.3)]"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="space-y-2">
+                            <h3 className="text-2xl text-[var(--color-ink-soft)]">{option.label}</h3>
+                            <p className="text-[14px] text-[rgba(62,54,42,0.6)]">{option.subtitle}</p>
+                          </div>
+                          {active && <div className="h-2 w-2 rounded-full bg-[var(--color-gold)] shadow-[0_0_10px_rgba(197,160,89,0.5)]" />}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="gallery-card rounded-[2.2rem] p-10">
+                  <div className="space-y-8">
+                    <div className="space-y-4">
+                      <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-[rgba(128,97,36,0.7)]">Selection Summary</p>
+                      <h3 className="text-3xl text-[var(--color-ink-soft)]">{selectedFortuneMeta.label} 리포트</h3>
+                      <p className="text-[16px] leading-8 text-[rgba(62,54,42,0.7)]">
+                        {selectedFortuneMeta.oneLine}
+                      </p>
+                    </div>
+
+                    <div className="space-y-5 rounded-[1.8rem] border border-[rgba(197,160,89,0.15)] bg-[rgba(248,245,240,0.6)] p-8">
+                      <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)]">주요 관람 포인트</p>
+                      <div className="grid gap-3">
+                        {selectedFortuneMeta.focus.map((item) => (
+                          <div key={item} className="flex items-center gap-3 text-[15px] text-[rgba(62,54,42,0.75)]">
+                            <Check className="h-4 w-4 text-[var(--color-gold)]" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <Link
+                      href={`/result?kind=gallery1&reportType=${selectedFortune}&selectedFortune=${selectedFortune}&birthDate=1990-01-01&birthTime=12:00&calendarType=solar&gender=male`}
+                      className="hero-cta flex w-full items-center justify-center gap-4 rounded-full py-5"
+                    >
+                      <span className="font-sans text-[12px] uppercase tracking-[0.4em]">결과 미리보기</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
                   </div>
                 </div>
               </div>
-            </section>
+            </motion.div>
+          )}
 
-            <section className="grid gap-8 lg:grid-cols-2">
-              <motion.div
-                whileHover={{ y: -8 }}
-                className="gallery-card flex flex-col justify-between rounded-[2.2rem] border border-[rgba(197,160,89,0.18)] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(89,71,36,0.12)]"
-              >
-                <div className="space-y-6">
-                  <p className="font-sans text-[11px] uppercase tracking-[0.45em] text-[rgba(128,97,36,0.6)]">Single Exhibition</p>
-                  <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">단일 운세 리포트</h2>
-                  <p className="max-w-sm text-[16px] leading-8 text-[rgba(62,54,42,0.65)]">
-                    재물, 연애, 직장 등 현재 가장 큰 에너지를 쓰고 있는 한 가지 주제에 대해 깊이 있는 통찰을 제공합니다.
-                  </p>
-                  <p className="font-sans text-2xl tracking-[0.1em] text-[var(--color-gold)]">₩4,900</p>
+          {/* Step 2: Total Summary */}
+          {view === "total-summary" && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-16"
+            >
+              <div className="flex flex-col items-center justify-between gap-6 border-b border-[rgba(197,160,89,0.15)] pb-10 sm:flex-row">
+                <div className="space-y-3">
+                  <button 
+                    onClick={() => setView("main")}
+                    className="font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)] hover:text-[var(--color-gold)] transition-colors"
+                  >
+                    ← 돌아가기
+                  </button>
+                  <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">토탈 리포트 구성</h2>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setView("single-select")}
-                  className="hero-cta mt-12 flex w-full items-center justify-center gap-4 rounded-full py-5 transition-all"
-                >
-                  <span className="font-sans text-[12px] uppercase tracking-[0.4em]">전시 선택하기</span>
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ y: -8 }}
-                className="gallery-card relative flex flex-col justify-between rounded-[2.2rem] border border-[rgba(197,160,89,0.3)] bg-[rgba(255,251,244,0.4)] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(89,71,36,0.14)]"
-              >
-                <div className="absolute right-10 top-10 rounded-full border border-[rgba(197,160,89,0.4)] bg-[rgba(197,160,89,0.1)] px-4 py-1.5">
-                  <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-[var(--color-gold)]">Signature</span>
-                </div>
-                <div className="space-y-6">
-                  <p className="font-sans text-[11px] uppercase tracking-[0.45em] text-[rgba(128,97,36,0.6)]">Total Collection</p>
-                  <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">토탈 운세 리포트</h2>
-                  <p className="max-w-sm text-[16px] leading-8 text-[rgba(62,54,42,0.65)]">
-                    삶의 다섯 가지 대운과 올해의 월별 흐름, 중요한 변화의 시기를 한 눈에 읽는 종합 큐레이션 전시입니다.
-                  </p>
-                  <p className="font-sans text-2xl tracking-[0.1em] text-[var(--color-gold)]">₩9,900</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setView("total-summary")}
-                  className="hero-cta mt-12 flex w-full items-center justify-center gap-4 rounded-full py-5 transition-all"
-                >
-                  <span className="font-sans text-[12px] uppercase tracking-[0.4em]">전체 흐름 보기</span>
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-              </motion.div>
-            </section>
-          </motion.div>
-        )}
-
-        {/* Step 2: Single Selection */}
-        {view === "single-select" && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-16"
-          >
-            <div className="flex flex-col items-center justify-between gap-6 border-b border-[rgba(197,160,89,0.15)] pb-10 sm:flex-row">
-              <div className="space-y-3">
-                <button 
-                  onClick={() => setView("main")}
-                  className="font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)] hover:text-[var(--color-gold)] transition-colors"
-                >
-                  ← 돌아가기
-                </button>
-                <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">리포트 종류 선택</h2>
+                <p className="font-sans text-xl tracking-[0.1em] text-[var(--color-gold)]">₩9,900</p>
               </div>
-              <p className="font-sans text-xl tracking-[0.1em] text-[var(--color-gold)]">단일 리포트 · ₩4,900</p>
-            </div>
 
-            <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
-              <div className="space-y-4">
-                {fortuneOptions.map((option) => {
-                  const active = selectedFortune === option.id;
-                  return (
-                    <button
-                      key={option.id}
-                      onClick={() => setSelectedFortune(option.id)}
-                      className={`group w-full rounded-[1.8rem] border p-7 text-left transition-all duration-300 ${
-                        active
-                          ? "border-[rgba(197,160,89,0.6)] bg-[rgba(255,251,244,0.8)] shadow-[0_20px_40px_rgba(89,71,36,0.06)]"
-                          : "border-[rgba(197,160,89,0.15)] bg-white/40 hover:border-[rgba(197,160,89,0.3)]"
-                      }`}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-2">
-                          <h3 className="text-2xl text-[var(--color-ink-soft)]">{option.label}</h3>
-                          <p className="text-[14px] text-[rgba(62,54,42,0.6)]">{option.subtitle}</p>
-                        </div>
-                        {active && <div className="h-2 w-2 rounded-full bg-[var(--color-gold)] shadow-[0_0_10px_rgba(197,160,89,0.5)]" />}
+              <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+                <div className="gallery-card rounded-[2.2rem] p-10">
+                  <div className="grid gap-10 sm:grid-cols-2">
+                    <div className="space-y-6">
+                      <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-[rgba(128,97,36,0.7)]">Overview</p>
+                      <div className="space-y-4">
+                        {totalReportSections.slice(0, 4).map((item) => (
+                          <div key={item} className="flex gap-4 text-[15px] leading-7 text-[rgba(62,54,42,0.75)]">
+                            <Check className="mt-1 h-4 w-4 shrink-0 text-[var(--color-gold)]" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
                       </div>
-                    </button>
-                  );
-                })}
-              </div>
+                    </div>
+                    <div className="space-y-6 sm:mt-11">
+                      <div className="space-y-4">
+                        {totalReportSections.slice(4).map((item) => (
+                          <div key={item} className="flex gap-4 text-[15px] leading-7 text-[rgba(62,54,42,0.75)]">
+                            <Check className="mt-1 h-4 w-4 shrink-0 text-[var(--color-gold)]" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-              <div className="gallery-card rounded-[2.2rem] p-10">
                 <div className="space-y-8">
-                  <div className="space-y-4">
-                    <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-[rgba(128,97,36,0.7)]">Selection Summary</p>
-                    <h3 className="text-3xl text-[var(--color-ink-soft)]">{selectedFortuneMeta.label} 리포트</h3>
+                  <div className="gallery-card rounded-[2.2rem] p-8 text-center border-dashed border-[rgba(197,160,89,0.3)]">
                     <p className="text-[16px] leading-8 text-[rgba(62,54,42,0.7)]">
-                      {selectedFortuneMeta.oneLine}
+                      "모든 운의 결을 하나로 잇고,<br />가장 강력한 타이밍을 선별해 드립니다."
                     </p>
                   </div>
 
-                  <div className="space-y-5 rounded-[1.8rem] border border-[rgba(197,160,89,0.15)] bg-[rgba(248,245,240,0.6)] p-8">
-                    <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)]">주요 관람 포인트</p>
-                    <div className="grid gap-3">
-                      {selectedFortuneMeta.focus.map((item) => (
-                        <div key={item} className="flex items-center gap-3 text-[15px] text-[rgba(62,54,42,0.75)]">
-                          <Check className="h-4 w-4 text-[var(--color-gold)]" />
-                          <span>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
                   <Link
-                    href={`/result?kind=gallery1&reportType=${selectedFortune}&selectedFortune=${selectedFortune}&birthDate=1990-01-01&birthTime=12:00&calendarType=solar&gender=male`}
-                    className="hero-cta flex w-full items-center justify-center gap-4 rounded-full py-5"
+                    href={`/result?kind=gallery1&reportType=total&birthDate=1990-01-01&birthTime=12:00&calendarType=solar&gender=male`}
+                    className="hero-cta flex w-full items-center justify-center gap-4 rounded-full py-6 shadow-[0_20px_40px_rgba(197,160,89,0.15)]"
                   >
-                    <span className="font-sans text-[12px] uppercase tracking-[0.4em]">결과 미리보기</span>
-                    <ArrowRight className="h-4 w-4" />
+                    <span className="font-sans text-[13px] uppercase tracking-[0.5em]">토탈 결과 미리보기</span>
+                    <ArrowRight className="h-5 w-5" />
                   </Link>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
 
-        {/* Step 2: Total Summary */}
-        {view === "total-summary" && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-16"
-          >
-            <div className="flex flex-col items-center justify-between gap-6 border-b border-[rgba(197,160,89,0.15)] pb-10 sm:flex-row">
-              <div className="space-y-3">
-                <button 
-                  onClick={() => setView("main")}
-                  className="font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)] hover:text-[var(--color-gold)] transition-colors"
-                >
-                  ← 돌아가기
-                </button>
-                <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">토탈 리포트 구성</h2>
-              </div>
-              <p className="font-sans text-xl tracking-[0.1em] text-[var(--color-gold)]">₩9,900</p>
-            </div>
-
-            <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-              <div className="gallery-card rounded-[2.2rem] p-10">
-                <div className="grid gap-10 sm:grid-cols-2">
-                  <div className="space-y-6">
-                    <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-[rgba(128,97,36,0.7)]">Overview</p>
-                    <div className="space-y-4">
-                      {totalReportSections.slice(0, 4).map((item) => (
-                        <div key={item} className="flex gap-4 text-[15px] leading-7 text-[rgba(62,54,42,0.75)]">
-                          <Check className="mt-1 h-4 w-4 shrink-0 text-[var(--color-gold)]" />
-                          <span>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="space-y-6 sm:mt-11">
-                    <div className="space-y-4">
-                      {totalReportSections.slice(4).map((item) => (
-                        <div key={item} className="flex gap-4 text-[15px] leading-7 text-[rgba(62,54,42,0.75)]">
-                          <Check className="mt-1 h-4 w-4 shrink-0 text-[var(--color-gold)]" />
-                          <span>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-8">
-                <div className="gallery-card rounded-[2.2rem] p-8 text-center border-dashed border-[rgba(197,160,89,0.3)]">
-                  <p className="text-[16px] leading-8 text-[rgba(62,54,42,0.7)]">
-                    "모든 운의 결을 하나로 잇고,<br />가장 강력한 타이밍을 선별해 드립니다."
+                  <p className="text-center font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.4)]">
+                    Premium curation for your entire year
                   </p>
                 </div>
-
-                <Link
-                  href={`/result?kind=gallery1&reportType=total&birthDate=1990-01-01&birthTime=12:00&calendarType=solar&gender=male`}
-                  className="hero-cta flex w-full items-center justify-center gap-4 rounded-full py-6 shadow-[0_20px_40px_rgba(197,160,89,0.15)]"
-                >
-                  <span className="font-sans text-[13px] uppercase tracking-[0.5em]">토탈 결과 미리보기</span>
-                  <ArrowRight className="h-5 w-5" />
-                </Link>
-
-                <p className="text-center font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.4)]">
-                  Premium curation for your entire year
-                </p>
               </div>
-            </div>
-          </motion.div>
-        )}
+            </motion.div>
+          )}
+        </div>
       </div>
     </div>
   );

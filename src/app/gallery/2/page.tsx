@@ -196,216 +196,217 @@ export default function GalleryTwo() {
                       fill
                       className="object-cover grayscale-[0.2] opacity-80"
                     />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(248,245,240,0.8)] to-transparent" />
-                  <div className="absolute bottom-6 left-8">
-                    <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-[rgba(62,54,42,0.5)]">Entrance</p>
-                    <p className="mt-1 text-xl tracking-[0.1em] text-[var(--color-ink-soft)]">전시관 입장</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[rgba(248,245,240,0.8)] to-transparent" />
+                    <div className="absolute bottom-6 left-8">
+                      <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-[rgba(62,54,42,0.5)]">Entrance</p>
+                      <p className="mt-1 text-xl tracking-[0.1em] text-[var(--color-ink-soft)]">전시관 입장</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </section>
+              </section>
 
-            <section className="grid gap-8 lg:grid-cols-2">
-              <motion.div
-                whileHover={{ y: -8 }}
-                className="gallery-card flex flex-col justify-between rounded-[2.2rem] border border-[rgba(197,160,89,0.18)] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(89,71,36,0.12)]"
-              >
-                <div className="space-y-6">
-                  <p className="font-sans text-[11px] uppercase tracking-[0.45em] text-[rgba(128,97,36,0.6)]">Single Compatibility</p>
-                  <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">단일 궁합 리포트</h2>
-                  <p className="max-w-sm text-[16px] leading-8 text-[rgba(62,54,42,0.65)]">
-                    연애, 재회, 결혼 등 지금 가장 궁금한 한 가지 주제에 대해 두 사람의 기운이 섞이는 방식을 분석합니다.
-                  </p>
-                  <p className="font-sans text-2xl tracking-[0.1em] text-[var(--color-gold)]">₩9,900</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={handleStartSingle}
-                  className="hero-cta mt-12 flex w-full items-center justify-center gap-4 rounded-full py-5 transition-all"
+              <section className="grid gap-8 lg:grid-cols-2">
+                <motion.div
+                  whileHover={{ y: -8 }}
+                  className="gallery-card flex flex-col justify-between rounded-[2.2rem] border border-[rgba(197,160,89,0.18)] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(89,71,36,0.12)]"
                 >
-                  <span className="font-sans text-[12px] uppercase tracking-[0.4em]">관계 읽기 시작</span>
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ y: -8 }}
-                className="gallery-card relative flex flex-col justify-between rounded-[2.2rem] border border-[rgba(197,160,89,0.3)] bg-[rgba(255,251,244,0.4)] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(89,71,36,0.14)]"
-              >
-                <div className="absolute right-10 top-10 rounded-full border border-[rgba(197,160,89,0.4)] bg-[rgba(197,160,89,0.1)] px-4 py-1.5">
-                  <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-[var(--color-gold)]">Signature</span>
-                </div>
-                <div className="space-y-6">
-                  <p className="font-sans text-[11px] uppercase tracking-[0.45em] text-[rgba(128,97,36,0.6)]">Premium Compatibility</p>
-                  <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">프리미엄 궁합 리포트</h2>
-                  <p className="max-w-sm text-[16px] leading-8 text-[rgba(62,54,42,0.65)]">
-                    두 사람의 과거와 현재, 그리고 미래의 갈림길까지 포함된 시기별 관계 흐름을 종합 큐레이션합니다.
-                  </p>
-                  <p className="font-sans text-2xl tracking-[0.1em] text-[var(--color-gold)]">₩19,000</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={handleStartPremium}
-                  className="hero-cta mt-12 flex w-full items-center justify-center gap-4 rounded-full py-5 transition-all"
-                >
-                  <span className="font-sans text-[12px] uppercase tracking-[0.4em]">우리의 흐름 깊이 보기</span>
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-              </motion.div>
-            </section>
-          </motion.div>
-        )}
-
-        {/* Step 2: Single Type Selection */}
-        {view === "single-select" && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-16">
-            <div className="flex flex-col items-center justify-between gap-6 border-b border-[rgba(197,160,89,0.15)] pb-10 sm:flex-row">
-              <div className="space-y-3">
-                <button 
-                  onClick={() => setView("main")}
-                  className="font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)] hover:text-[var(--color-gold)] transition-colors"
-                >
-                  ← 돌아가기
-                </button>
-                <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">궁합 유형 선택</h2>
-              </div>
-              <p className="font-sans text-xl tracking-[0.1em] text-[var(--color-gold)]">단일 리포트 · ₩9,900</p>
-            </div>
-
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {compatibilityOptions.map((option) => {
-                const active = selectedCompatibility === option.id;
-                return (
-                  <button
-                    key={option.id}
-                    onClick={() => handleSelectType(option.id)}
-                    className={`group relative overflow-hidden rounded-[1.8rem] border p-7 text-left transition-all duration-300 ${
-                      active
-                        ? "border-[rgba(197,160,89,0.6)] bg-[rgba(255,251,244,0.8)] shadow-[0_20px_40px_rgba(89,71,36,0.06)]"
-                        : "border-[rgba(197,160,89,0.15)] bg-white/40 hover:border-[rgba(197,160,89,0.3)]"
-                    }`}
-                  >
-                    <div className="space-y-2">
-                      <h3 className="text-xl text-[var(--color-ink-soft)]">{option.label}</h3>
-                      <p className="text-[13px] leading-relaxed text-[rgba(62,54,42,0.6)]">{option.subtitle}</p>
-                    </div>
-                    {active && <div className="absolute bottom-4 right-4 h-1.5 w-1.5 rounded-full bg-[var(--color-gold)]" />}
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="flex justify-center pt-8">
-              <button
-                onClick={() => setView("input")}
-                className="hero-cta flex items-center gap-4 rounded-full px-16 py-5 transition-all"
-              >
-                <span className="font-sans text-[12px] uppercase tracking-[0.4em]">다음 단계</span>
-                <ArrowRight className="h-4 w-4" />
-              </button>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Step 3: Input Form */}
-        {view === "input" && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-16">
-            <div className="flex flex-col items-center justify-between gap-6 border-b border-[rgba(197,160,89,0.15)] pb-10 sm:flex-row">
-              <div className="space-y-3">
-                <button 
-                  onClick={() => setView(relationshipType === "premium" ? "premium-summary" : "single-select")}
-                  className="font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)] hover:text-[var(--color-gold)] transition-colors"
-                >
-                  ← 돌아가기
-                </button>
-                <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">두 사람 정보 입력</h2>
-              </div>
-              <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)] italic">Private Consultation Room</p>
-            </div>
-
-            <div className="grid gap-10 lg:grid-cols-2">
-              <PersonCard title="A 사람" person={personA} setValue={updatePerson("a")} />
-              <PersonCard title="B 사람" person={personB} setValue={updatePerson("b")} />
-            </div>
-
-            <div className="flex flex-col items-center gap-6 pt-10">
-              <Link
-                href={`/result?kind=gallery2&relationshipType=${relationshipType}&selectedCompatibility=${selectedCompatibility}&birthDateA=${personA.birthDate}&birthTimeA=${personA.birthTime}&birthDateB=${personB.birthDate}&birthTimeB=${personB.birthTime}`}
-                className="hero-cta flex w-full max-w-md items-center justify-center gap-4 rounded-full py-6 shadow-[0_20px_40px_rgba(197,160,89,0.15)]"
-              >
-                <span className="font-sans text-[13px] uppercase tracking-[0.5em]">관계 흐름 미리보기</span>
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-              <p className="text-[13px] text-[rgba(62,54,42,0.4)]">입력하신 정보는 오직 사주 분석을 위해서만 사용됩니다.</p>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Step 4: Premium Summary */}
-        {view === "premium-summary" && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-16">
-            <div className="flex flex-col items-center justify-between gap-6 border-b border-[rgba(197,160,89,0.15)] pb-10 sm:flex-row">
-              <div className="space-y-3">
-                <button 
-                  onClick={() => setView("main")}
-                  className="font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)] hover:text-[var(--color-gold)] transition-colors"
-                >
-                  ← 돌아가기
-                </button>
-                <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">프리미엄 리포트 구성</h2>
-              </div>
-              <p className="font-sans text-xl tracking-[0.1em] text-[var(--color-gold)]">₩19,000</p>
-            </div>
-
-            <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-              <div className="gallery-card rounded-[2.2rem] p-10">
-                <div className="grid gap-10 sm:grid-cols-2">
                   <div className="space-y-6">
-                    <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-[rgba(128,97,36,0.7)]">Deep Analysis</p>
-                    <div className="space-y-4">
-                      {premiumCompatibilitySections.slice(0, 3).map((item) => (
-                        <div key={item} className="flex gap-4 text-[15px] leading-7 text-[rgba(62,54,42,0.75)]">
-                          <Check className="mt-1 h-4 w-4 shrink-0 text-[var(--color-gold)]" />
-                          <span>{item}</span>
-                        </div>
-                      ))}
-                    </div>
+                    <p className="font-sans text-[11px] uppercase tracking-[0.45em] text-[rgba(128,97,36,0.6)]">Single Compatibility</p>
+                    <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">단일 궁합 리포트</h2>
+                    <p className="max-w-sm text-[16px] leading-8 text-[rgba(62,54,42,0.65)]">
+                      연애, 재회, 결혼 등 지금 가장 궁금한 한 가지 주제에 대해 두 사람의 기운이 섞이는 방식을 분석합니다.
+                    </p>
+                    <p className="font-sans text-2xl tracking-[0.1em] text-[var(--color-gold)]">₩9,900</p>
                   </div>
-                  <div className="space-y-6 sm:mt-11">
-                    <div className="space-y-4">
-                      {premiumCompatibilitySections.slice(3).map((item) => (
-                        <div key={item} className="flex gap-4 text-[15px] leading-7 text-[rgba(62,54,42,0.75)]">
-                          <Check className="mt-1 h-4 w-4 shrink-0 text-[var(--color-gold)]" />
-                          <span>{item}</span>
-                        </div>
-                      ))}
-                    </div>
+                  <button
+                    type="button"
+                    onClick={handleStartSingle}
+                    className="hero-cta mt-12 flex w-full items-center justify-center gap-4 rounded-full py-5 transition-all"
+                  >
+                    <span className="font-sans text-[12px] uppercase tracking-[0.4em]">관계 읽기 시작</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ y: -8 }}
+                  className="gallery-card relative flex flex-col justify-between rounded-[2.2rem] border border-[rgba(197,160,89,0.3)] bg-[rgba(255,251,244,0.4)] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(89,71,36,0.14)]"
+                >
+                  <div className="absolute right-10 top-10 rounded-full border border-[rgba(197,160,89,0.4)] bg-[rgba(197,160,89,0.1)] px-4 py-1.5">
+                    <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-[var(--color-gold)]">Signature</span>
                   </div>
+                  <div className="space-y-6">
+                    <p className="font-sans text-[11px] uppercase tracking-[0.45em] text-[rgba(128,97,36,0.6)]">Premium Compatibility</p>
+                    <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">프리미엄 궁합 리포트</h2>
+                    <p className="max-w-sm text-[16px] leading-8 text-[rgba(62,54,42,0.65)]">
+                      두 사람의 과거와 현재, 그리고 미래의 갈림길까지 포함된 시기별 관계 흐름을 종합 큐레이션합니다.
+                    </p>
+                    <p className="font-sans text-2xl tracking-[0.1em] text-[var(--color-gold)]">₩19,000</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleStartPremium}
+                    className="hero-cta mt-12 flex w-full items-center justify-center gap-4 rounded-full py-5 transition-all"
+                  >
+                    <span className="font-sans text-[12px] uppercase tracking-[0.4em]">우리의 흐름 깊이 보기</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </motion.div>
+              </section>
+            </motion.div>
+          )}
+
+          {/* Step 2: Single Type Selection */}
+          {view === "single-select" && (
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-16">
+              <div className="flex flex-col items-center justify-between gap-6 border-b border-[rgba(197,160,89,0.15)] pb-10 sm:flex-row">
+                <div className="space-y-3">
+                  <button 
+                    onClick={() => setView("main")}
+                    className="font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)] hover:text-[var(--color-gold)] transition-colors"
+                  >
+                    ← 돌아가기
+                  </button>
+                  <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">궁합 유형 선택</h2>
                 </div>
+                <p className="font-sans text-xl tracking-[0.1em] text-[var(--color-gold)]">단일 리포트 · ₩9,900</p>
               </div>
 
-              <div className="space-y-8">
-                <div className="gallery-card rounded-[2.2rem] p-8 text-center border-dashed border-[rgba(197,160,89,0.3)]">
-                  <p className="text-[16px] leading-8 text-[rgba(62,54,42,0.7)]">
-                    "우리가 왜 만났는지,<br />어디로 가야 하는지 조용히 들려드립니다."
-                  </p>
-                </div>
+              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                {compatibilityOptions.map((option) => {
+                  const active = selectedCompatibility === option.id;
+                  return (
+                    <button
+                      key={option.id}
+                      onClick={() => handleSelectType(option.id)}
+                      className={`group relative overflow-hidden rounded-[1.8rem] border p-7 text-left transition-all duration-300 ${
+                        active
+                          ? "border-[rgba(197,160,89,0.6)] bg-[rgba(255,251,244,0.8)] shadow-[0_20px_40px_rgba(89,71,36,0.06)]"
+                          : "border-[rgba(197,160,89,0.15)] bg-white/40 hover:border-[rgba(197,160,89,0.3)]"
+                      }`}
+                    >
+                      <div className="space-y-2">
+                        <h3 className="text-xl text-[var(--color-ink-soft)]">{option.label}</h3>
+                        <p className="text-[13px] leading-relaxed text-[rgba(62,54,42,0.6)]">{option.subtitle}</p>
+                      </div>
+                      {active && <div className="absolute bottom-4 right-4 h-1.5 w-1.5 rounded-full bg-[var(--color-gold)]" />}
+                    </button>
+                  );
+                })}
+              </div>
 
+              <div className="flex justify-center pt-8">
                 <button
                   onClick={() => setView("input")}
-                  className="hero-cta flex w-full items-center justify-center gap-4 rounded-full py-6 shadow-[0_20px_40px_rgba(197,160,89,0.15)]"
+                  className="hero-cta flex items-center gap-4 rounded-full px-16 py-5 transition-all"
                 >
-                  <span className="font-sans text-[13px] uppercase tracking-[0.5em]">프리미엄 결과 미리보기</span>
-                  <ArrowRight className="h-5 w-5" />
+                  <span className="font-sans text-[12px] uppercase tracking-[0.4em]">다음 단계</span>
+                  <ArrowRight className="h-4 w-4" />
                 </button>
-
-                <p className="text-center font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.4)]">
-                  Deeply curated for your shared fate
-                </p>
               </div>
-            </div>
-          </motion.div>
-        )}
+            </motion.div>
+          )}
+
+          {/* Step 3: Input Form */}
+          {view === "input" && (
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-16">
+              <div className="flex flex-col items-center justify-between gap-6 border-b border-[rgba(197,160,89,0.15)] pb-10 sm:flex-row">
+                <div className="space-y-3">
+                  <button 
+                    onClick={() => setView(relationshipType === "premium" ? "premium-summary" : "single-select")}
+                    className="font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)] hover:text-[var(--color-gold)] transition-colors"
+                  >
+                    ← 돌아가기
+                  </button>
+                  <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">두 사람 정보 입력</h2>
+                </div>
+                <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)] italic">Private Consultation Room</p>
+              </div>
+
+              <div className="grid gap-10 lg:grid-cols-2">
+                <PersonCard title="A 사람" person={personA} setValue={updatePerson("a")} />
+                <PersonCard title="B 사람" person={personB} setValue={updatePerson("b")} />
+              </div>
+
+              <div className="flex flex-col items-center gap-6 pt-10">
+                <Link
+                  href={`/result?kind=gallery2&relationshipType=${relationshipType}&selectedCompatibility=${selectedCompatibility}&birthDateA=${personA.birthDate}&birthTimeA=${personA.birthTime}&birthDateB=${personB.birthDate}&birthTimeB=${personB.birthTime}`}
+                  className="hero-cta flex w-full max-w-md items-center justify-center gap-4 rounded-full py-6 shadow-[0_20px_40px_rgba(197,160,89,0.15)]"
+                >
+                  <span className="font-sans text-[13px] uppercase tracking-[0.5em]">관계 흐름 미리보기</span>
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
+                <p className="text-[13px] text-[rgba(62,54,42,0.4)]">입력하신 정보는 오직 사주 분석을 위해서만 사용됩니다.</p>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Step 4: Premium Summary */}
+          {view === "premium-summary" && (
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-16">
+              <div className="flex flex-col items-center justify-between gap-6 border-b border-[rgba(197,160,89,0.15)] pb-10 sm:flex-row">
+                <div className="space-y-3">
+                  <button 
+                    onClick={() => setView("main")}
+                    className="font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)] hover:text-[var(--color-gold)] transition-colors"
+                  >
+                    ← 돌아가기
+                  </button>
+                  <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">프리미엄 리포트 구성</h2>
+                </div>
+                <p className="font-sans text-xl tracking-[0.1em] text-[var(--color-gold)]">₩19,000</p>
+              </div>
+
+              <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+                <div className="gallery-card rounded-[2.2rem] p-10">
+                  <div className="grid gap-10 sm:grid-cols-2">
+                    <div className="space-y-6">
+                      <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-[rgba(128,97,36,0.7)]">Deep Analysis</p>
+                      <div className="space-y-4">
+                        {premiumCompatibilitySections.slice(0, 3).map((item) => (
+                          <div key={item} className="flex gap-4 text-[15px] leading-7 text-[rgba(62,54,42,0.75)]">
+                            <Check className="mt-1 h-4 w-4 shrink-0 text-[var(--color-gold)]" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="space-y-6 sm:mt-11">
+                      <div className="space-y-4">
+                        {premiumCompatibilitySections.slice(3).map((item) => (
+                          <div key={item} className="flex gap-4 text-[15px] leading-7 text-[rgba(62,54,42,0.75)]">
+                            <Check className="mt-1 h-4 w-4 shrink-0 text-[var(--color-gold)]" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-8">
+                  <div className="gallery-card rounded-[2.2rem] p-8 text-center border-dashed border-[rgba(197,160,89,0.3)]">
+                    <p className="text-[16px] leading-8 text-[rgba(62,54,42,0.7)]">
+                      "우리가 왜 만났는지,<br />어디로 가야 하는지 조용히 들려드립니다."
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => setView("input")}
+                    className="hero-cta flex w-full items-center justify-center gap-4 rounded-full py-6 shadow-[0_20px_40px_rgba(197,160,89,0.15)]"
+                  >
+                    <span className="font-sans text-[13px] uppercase tracking-[0.5em]">프리미엄 결과 미리보기</span>
+                    <ArrowRight className="h-5 w-5" />
+                  </button>
+
+                  <p className="text-center font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.4)]">
+                    Deeply curated for your shared fate
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </div>
       </div>
     </div>
   );
