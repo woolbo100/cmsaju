@@ -42,13 +42,14 @@ export default function Home() {
       <section className="hero-stage relative isolate min-h-screen overflow-hidden bg-[var(--color-hanji)] pt-24">
         <div className="hanging-emblem-container flex">
           <div className="hanging-emblem-string" />
-          <div className="hanging-emblem-card w-12 sm:w-16">
+          <div className="hanging-emblem-bead" />
+          <div className="hanging-emblem-card w-20 sm:w-24">
             <Image
               src="/image/obj.png"
               alt="천명갤러리 엠블럼"
-              width={64}
-              height={120}
-              className="object-contain"
+              width={120}
+              height={180}
+              className="enso-gold-foil object-contain"
             />
           </div>
         </div>
