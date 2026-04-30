@@ -63,11 +63,11 @@ export default function Home() {
 
           <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[rgba(248,245,240,1)] via-[rgba(248,245,240,0.6)] to-transparent" />
           
-          {/* Large Exhibition Frame as Background Layer */}
-          <div className="hero-exhibition-frame-layer absolute inset-0 z-0 mx-auto max-w-[92%] opacity-45" />
+          {/* Large Exhibition Frame as Background Layer - Precisely aligned under header */}
+          <div className="hero-exhibition-frame-layer absolute inset-x-[4%] bottom-10 top-24 z-0 opacity-45 sm:inset-x-[5%]" />
         </div>
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-6rem)] max-w-7xl flex-col px-6 pb-16 pt-24 sm:px-8 lg:px-12">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-6rem)] max-w-7xl flex-col px-6 pb-16 pt-32 sm:px-8 lg:px-12">
           <div className="flex flex-1 flex-col items-center justify-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
