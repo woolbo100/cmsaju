@@ -295,3 +295,54 @@ a {
     transform: translateY(5px);
   }
 }
+
+/* Hanging Emblem */
+.hanging-emblem-container {
+  position: absolute;
+  top: 0;
+  right: 6%;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  pointer-events: none;
+}
+
+.hanging-emblem-string {
+  width: 1.5px;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    rgba(197, 160, 89, 0) 0%,
+    rgba(197, 160, 89, 0.4) 20%,
+    rgba(197, 160, 89, 0.8) 100%
+  );
+  box-shadow: 0 0 4px rgba(197, 160, 89, 0.2);
+}
+
+.hanging-emblem-card {
+  position: relative;
+  width: 64px;
+  height: auto;
+  margin-top: -2px;
+  filter: drop-shadow(0 12px 24px rgba(66, 52, 26, 0.12));
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.hanging-emblem-container:hover {
+  animation: emblem-sway 3s ease-in-out infinite;
+}
+
+.hanging-emblem-container:hover .hanging-emblem-card {
+  filter: drop-shadow(0 15px 30px rgba(197, 160, 89, 0.2));
+}
+
+@keyframes emblem-sway {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(1.2deg); }
+  75% { transform: rotate(-1.2deg); }
+  100% { transform: rotate(0deg); }
+}

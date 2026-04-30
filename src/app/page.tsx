@@ -40,6 +40,19 @@ export default function Home() {
   return (
     <>
       <section className="hero-stage relative isolate min-h-screen overflow-hidden bg-[var(--color-hanji)] pt-24">
+        <div className="hanging-emblem-container flex">
+          <div className="hanging-emblem-string" />
+          <div className="hanging-emblem-card w-12 sm:w-16">
+            <Image
+              src="/image/obj.png"
+              alt="천명갤러리 엠블럼"
+              width={64}
+              height={120}
+              className="object-contain"
+            />
+          </div>
+        </div>
+
         <div className="pointer-events-none absolute inset-0">
           <div className="hero-paper absolute inset-0" />
           <div className="hero-landscape-overlay absolute inset-0">
