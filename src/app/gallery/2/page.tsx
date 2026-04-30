@@ -152,35 +152,50 @@ export default function GalleryTwo() {
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-6 pb-40 pt-52 sm:px-8 lg:px-12">
-      <div className="space-y-20">
-        {/* Step 1: Main */}
-        {view === "main" && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-24">
-            <section className="grid gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center">
-              <div className="space-y-10">
-                <div className="space-y-5">
-                  <p className="font-sans text-[11px] uppercase tracking-[0.46em] text-[rgba(62,54,42,0.52)]">
-                    Exhibit No. 02
-                  </p>
-                  <h1 className="text-5xl leading-[1.18] tracking-[0.08em] text-[var(--color-ink-soft)] md:text-7xl">
-                    우리의 흐름을 보다
-                  </h1>
-                  <p className="max-w-xl text-[16px] leading-8 text-[rgba(62,54,42,0.72)]">
-                    제2전시실은 두 사람의 사주가 만나 만드는 제3의 에너지를 읽어내는 공간입니다.
-                    단순한 점수가 아닌, 왜 만나게 되었고 어디로 흘러가는지를 한 편의 작품처럼 담아냅니다.
-                  </p>
-                </div>
-              </div>
+    <div className="relative min-h-screen overflow-hidden bg-[var(--color-hanji)]">
+      {/* Background Layer */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="hero-paper absolute inset-0" />
+        <div className="hero-landscape-overlay absolute inset-0">
+          <Image
+            src="/image/main3.png"
+            alt="제 2 전시실 통배경"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+        </div>
+      </div>
 
-              <div className="gallery-card relative overflow-hidden rounded-[2.2rem] p-5 shadow-[0_30px_70px_rgba(66,52,26,0.08)]">
-                <div className="relative aspect-[16/9] overflow-hidden rounded-[1.8rem] sm:aspect-[21/9]">
-                  <Image
-                    src="/image/main3.png"
-                    alt="제 2 전시실 배경"
-                    fill
-                    className="object-cover grayscale-[0.2] opacity-80"
-                  />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pb-40 pt-52 sm:px-8 lg:px-12">
+        <div className="space-y-20">
+          {/* Step 1: Main */}
+          {view === "main" && (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-24">
+              <section className="grid gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center">
+                <div className="space-y-10">
+                  <div className="space-y-5">
+                    <p className="font-sans text-[11px] uppercase tracking-[0.46em] text-[rgba(62,54,42,0.52)]">
+                      Exhibit No. 02
+                    </p>
+                    <h1 className="text-5xl leading-[1.18] tracking-[0.08em] text-[var(--color-ink-soft)] md:text-7xl">
+                      우리의 흐름을 보다
+                    </h1>
+                    <p className="max-w-xl text-[16px] leading-8 text-[rgba(62,54,42,0.72)]">
+                      제2전시실은 두 사람의 사주가 만나 만드는 제3의 에너지를 읽어내는 공간입니다.
+                      단순한 점수가 아닌, 왜 만나게 되었고 어디로 흘러가는지를 한 편의 작품처럼 담아냅니다.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="gallery-card relative overflow-hidden rounded-[2.2rem] p-5 shadow-[0_30px_70px_rgba(66,52,26,0.08)]">
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-[1.8rem] sm:aspect-[21/9]">
+                    <Image
+                      src="/assets/rel_water_wood.png"
+                      alt="우리의 수묵 조화"
+                      fill
+                      className="object-cover grayscale-[0.2] opacity-80"
+                    />
                   <div className="absolute inset-0 bg-gradient-to-t from-[rgba(248,245,240,0.8)] to-transparent" />
                   <div className="absolute bottom-6 left-8">
                     <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-[rgba(62,54,42,0.5)]">Entrance</p>
