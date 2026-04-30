@@ -97,6 +97,7 @@ export default function GalleryOne() {
             priority
             className="object-cover object-center"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-hanji)]/40 via-transparent to-[var(--color-hanji)]/80" />
         </div>
       </div>
 

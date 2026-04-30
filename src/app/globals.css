@@ -157,7 +157,7 @@ a {
 .hero-landscape-overlay {
   position: absolute;
   inset: 0;
-  opacity: 0.85;
+  opacity: 0.45;
   mix-blend-mode: normal;
   pointer-events: none;
 }

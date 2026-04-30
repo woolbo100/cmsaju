@@ -54,6 +54,7 @@ export default function SpecialExhibition() {
             priority
             className="object-cover object-center"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F8F5F0]/40 via-transparent to-[#F8F5F0]/80" />
         </div>
       </div>
 
