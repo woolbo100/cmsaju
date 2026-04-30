@@ -236,14 +236,14 @@ a {
   animation: hero-shimmer 14s linear infinite;
 }
 
-.hero-content-frame {
-  position: relative;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.02);
+.hero-exhibition-frame-layer {
+  border: 1px solid rgba(197, 160, 89, 0.28);
+  background: rgba(255, 255, 255, 0.05);
   box-shadow:
-    inset 0 0 60px rgba(197, 160, 89, 0.03),
-    0 20px 50px rgba(0, 0, 0, 0.02);
+    inset 0 0 100px rgba(197, 160, 89, 0.04),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
   border-radius: 2px;
+  pointer-events: none;
 }
 
 .hero-art-frame {
@@ -319,39 +319,16 @@ a {
 }
 
 @keyframes hero-drift {
-
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate3d(0, 10px, 0) scale(1.03);
-  }
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, 10px, 0) scale(1.03); }
 }
 
 @keyframes hero-shimmer {
-
-  0%,
-  100% {
-    opacity: 0.24;
-    transform: translateY(0);
-  }
-
-  50% {
-    opacity: 0.42;
-    transform: translateY(-6px);
-  }
+  0%, 100% { opacity: 0.24; transform: translateY(0); }
+  50% { opacity: 0.42; transform: translateY(-6px); }
 }
 
 @keyframes hero-bob {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(5px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
 }
