@@ -62,12 +62,9 @@ export default function Home() {
           </div>
 
           <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[rgba(248,245,240,1)] via-[rgba(248,245,240,0.6)] to-transparent" />
-          
-          {/* Large Exhibition Frame as Background Layer - Precisely aligned under header */}
-          <div className="hero-exhibition-frame-layer absolute inset-x-[4%] bottom-10 top-24 z-0 opacity-45 sm:inset-x-[5%]" />
         </div>
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-6rem)] max-w-7xl flex-col px-6 pb-16 pt-32 sm:px-8 lg:px-12">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-6rem)] max-w-7xl flex-col px-6 pb-24 pt-40 sm:px-8 lg:px-12">
           <div className="flex flex-1 flex-col items-center justify-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -90,7 +87,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="relative mt-16 w-full max-w-[22rem] sm:max-w-[26rem] lg:mt-20 lg:max-w-[30rem]"
+              className="relative mt-24 w-full max-w-[22rem] sm:max-w-[26rem] lg:mt-32 lg:max-w-[30rem]"
             >
               <div className="relative aspect-square overflow-hidden">
                 <motion.div

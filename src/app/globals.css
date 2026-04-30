@@ -143,107 +143,24 @@ a {
   inset: 0;
   background:
     linear-gradient(90deg, rgba(197, 160, 89, 0.05), transparent 15%, transparent 85%, rgba(197, 160, 89, 0.05)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.6), transparent 35%);
-  mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(248, 245, 240, 0.8));
   pointer-events: none;
   z-index: 1;
+}
+
+.hero-paper {
+  background-image: 
+    linear-gradient(rgba(250, 247, 239, 0.9), rgba(248, 245, 240, 0.95)),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5), transparent 70%);
 }
 
 .hero-landscape-overlay {
   position: absolute;
   inset: 0;
-  opacity: 0.18;
+  opacity: 0.12;
   mix-blend-mode: multiply;
   pointer-events: none;
-  filter: contrast(1.1) brightness(1.05) grayscale(0.2);
-}
-
-.hero-paper {
-  background-image:
-    linear-gradient(180deg, rgba(255, 252, 246, 0.88), rgba(248, 245, 240, 0.94)),
-    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.85), transparent 35%),
-    radial-gradient(circle at 85% 25%, rgba(226, 215, 198, 0.25), transparent 30%);
-}
-
-.hero-paper::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.15;
-  background-image:
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  background-size: auto;
-  mix-blend-mode: multiply;
-}
-
-.hero-mist {
-  filter: blur(55px);
-  opacity: 0.7;
-  animation: hero-drift 18s ease-in-out infinite;
-}
-
-.hero-mist-top {
-  background: radial-gradient(circle, rgba(161, 155, 148, 0.18), transparent 68%);
-}
-
-.hero-mist-bottom {
-  background: radial-gradient(circle, rgba(132, 136, 143, 0.16), transparent 68%);
-  animation-delay: -7s;
-}
-
-.hero-brush {
-  opacity: 0.35;
-  background:
-    radial-gradient(ellipse at center, rgba(197, 160, 89, 0.25), transparent 70%),
-    linear-gradient(145deg, rgba(212, 175, 55, 0.15) 0%, rgba(197, 160, 89, 0.08) 50%, transparent 100%);
-  filter: blur(24px);
-  z-index: 2;
-}
-
-.hero-brush-left {
-  border-radius: 0 100% 100% 0;
-  background: linear-gradient(90deg, rgba(212, 175, 55, 0.12), transparent);
-}
-
-.hero-brush-right {
-  border-radius: 100% 0 0 100%;
-  background: linear-gradient(-90deg, rgba(212, 175, 55, 0.12), transparent);
-}
-
-.hero-gold-cloud {
-  opacity: 0.36;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  animation: hero-shimmer 11s ease-in-out infinite;
-}
-
-.hero-gold-cloud-left {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 140'%3E%3Cpath d='M18 88c20-40 58-56 98-48 24 4 44 18 58 34' fill='none' stroke='url(%23goldGrad)' stroke-width='1.8' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='goldGrad' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:%23C5A059;stop-opacity:0' /%3E%3Cstop offset='50%25' style='stop-color:%23D4AF37;stop-opacity:0.8' /%3E%3Cstop offset='100%25' style='stop-color:%23C5A059;stop-opacity:0' /%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
-}
-
-.hero-gold-cloud-right {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 140'%3E%3Cpath d='M22 64c16 6 29 9 44 9 13 0 25-2 40-8 20-8 38-10 54-8 20 2 35 10 45 24' fill='none' stroke='url(%23goldGrad2)' stroke-width='1.6' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='goldGrad2' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:%23C5A059;stop-opacity:0' /%3E%3Cstop offset='50%25' style='stop-color:%23D4AF37;stop-opacity:0.7' /%3E%3Cstop offset='100%25' style='stop-color:%23C5A059;stop-opacity:0' /%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
-  animation-delay: -5.5s;
-}
-
-.hero-gold-dust {
-  opacity: 0.32;
-  background-image:
-    radial-gradient(circle at 18% 42%, rgba(197, 160, 89, 0.65) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 78% 28%, rgba(197, 160, 89, 0.58) 0 1px, transparent 1.6px),
-    radial-gradient(circle at 62% 76%, rgba(197, 160, 89, 0.46) 0 1px, transparent 1.4px);
-  animation: hero-shimmer 14s linear infinite;
-}
-
-.hero-exhibition-frame-layer {
-  border: 1px solid rgba(197, 160, 89, 0.28);
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow:
-    inset 0 0 100px rgba(197, 160, 89, 0.04),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
-  border-radius: 2px;
-  pointer-events: none;
+  filter: contrast(1.05) brightness(1.1) grayscale(0.4);
 }
 
 .hero-art-frame {
