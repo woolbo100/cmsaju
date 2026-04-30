@@ -52,31 +52,36 @@ export default function RootLayout({
   return (
     <html lang="ko" className="h-full antialiased">
       <body className="min-h-full bg-[var(--color-hanji)] text-[var(--color-ink)]">
-        <header className="fixed inset-x-0 top-0 z-50 border-b border-[rgba(197,160,89,0.16)] bg-[rgba(248,245,240,0.72)] backdrop-blur-2xl">
+        <header className="fixed inset-x-0 top-0 z-50 border-b border-[rgba(197,160,89,0.12)] bg-[rgba(248,245,240,0.8)] backdrop-blur-xl">
           <nav className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12">
             <Link
               href="/"
-              className="group flex items-center gap-4 text-[var(--color-ink-soft)] transition-colors"
+              className="group flex items-center gap-3 text-[var(--color-ink-soft)] transition-colors"
             >
-              <span className="text-[1.45rem] font-semibold tracking-[0.32em]">천명갤러리</span>
-              <span className="hidden h-px w-10 bg-[linear-gradient(90deg,rgba(197,160,89,0),rgba(197,160,89,0.8),rgba(197,160,89,0))] sm:block" />
+              <div className="relative flex items-center gap-3">
+                <span className="font-serif text-[1.4rem] font-bold tracking-[0.35em]">天命 GALLERY</span>
+                <div className="h-4 w-4 rotate-45 border border-[rgba(197,160,89,0.5)] bg-[rgba(197,160,89,0.05)]" />
+              </div>
             </Link>
 
-            <div className="hidden items-center gap-8 md:flex lg:gap-12">
+            <div className="hidden items-center gap-10 md:flex lg:gap-14">
               {navigationItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="nav-link font-sans text-[12px] uppercase tracking-[0.32em] text-[rgba(62,54,42,0.78)]"
+                  className="nav-link font-sans text-[11.5px] uppercase tracking-[0.35em] text-[rgba(62,54,42,0.7)] transition-colors hover:text-[var(--color-gold)]"
                 >
                   {item.label}
                 </Link>
               ))}
             </div>
 
-            <p className="hidden font-sans text-[10px] uppercase tracking-[0.42em] text-[rgba(62,54,42,0.56)] lg:block">
-              Curated Fate & Art
-            </p>
+            <div className="hidden items-center gap-4 lg:flex">
+              <div className="h-px w-8 bg-[rgba(197,160,89,0.2)]" />
+              <p className="font-sans text-[9px] uppercase tracking-[0.5em] text-[rgba(62,54,42,0.45)]">
+                CURATED FATE & ART
+              </p>
+            </div>
           </nav>
         </header>
 

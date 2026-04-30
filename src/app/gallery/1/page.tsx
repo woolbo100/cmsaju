@@ -2,7 +2,7 @@
 
 import { calculateSaju, getElementDetails, type FiveElements } from "@/lib/saju";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Download, Sparkles } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
@@ -56,16 +56,6 @@ const fortuneOptions: FortuneOption[] = [
   },
 ];
 
-const singleReportSections = [
-  "기본 사주 요약: 년주, 월주, 일주, 시주",
-  "천간·지지와 오행 분포를 직관적으로 정리",
-  "현재 흐름, 올해 방향, 지금 조심할 흐름",
-  "선택한 운세 1개 깊이 해석",
-  "부족한 오행 보완 방향",
-  "오행 수묵화 이미지 1장 다운로드",
-  "오늘의 한 줄 운세 카드",
-];
-
 const totalReportSections = [
   "단일 리포트의 모든 내용 포함",
   "올해 전체 흐름과 상승기·정리기·전환기",
@@ -76,56 +66,9 @@ const totalReportSections = [
   "올해의 한 줄 운세 프리미엄 버전",
 ];
 
-const reportMeta: Record<
-  ReportType,
-  {
-    title: string;
-    price: string;
-    intro: string;
-    summary: string;
-  }
-> = {
-  wealth: {
-    title: "단일 운세 리포트",
-    price: "₩4,900",
-    intro: "가장 궁금한 영역 하나를 깊이 있게 보는 큐레이션",
-    summary: "재물의 유입과 유출, 기회가 강해지는 구간을 중심으로 읽습니다.",
-  },
-  love: {
-    title: "단일 운세 리포트",
-    price: "₩4,900",
-    intro: "가장 궁금한 영역 하나를 깊이 있게 보는 큐레이션",
-    summary: "관계의 패턴과 인연이 머무는 방식을 중심으로 읽습니다.",
-  },
-  career: {
-    title: "단일 운세 리포트",
-    price: "₩4,900",
-    intro: "가장 궁금한 영역 하나를 깊이 있게 보는 큐레이션",
-    summary: "일의 방향, 자리의 변화, 인정받는 포인트를 중심으로 읽습니다.",
-  },
-  supporter: {
-    title: "단일 운세 리포트",
-    price: "₩4,900",
-    intro: "가장 궁금한 영역 하나를 깊이 있게 보는 큐레이션",
-    summary: "도움을 주는 인연과 연결이 열리는 시점을 중심으로 읽습니다.",
-  },
-  health: {
-    title: "단일 운세 리포트",
-    price: "₩4,900",
-    intro: "가장 궁금한 영역 하나를 깊이 있게 보는 큐레이션",
-    summary: "몸과 기운의 리듬, 에너지 회복 포인트를 중심으로 읽습니다.",
-  },
-  total: {
-    title: "토탈 운세 리포트",
-    price: "₩9,900",
-    intro: "내 흐름 전체를 한 번에 조망하는 프리미엄 전시",
-    summary: "다섯 가지 운세와 시기 운, 월별 흐름까지 전체 구성을 담습니다.",
-  },
-};
-
 export default function GalleryOne() {
+  const [view, setView] = useState<"main" | "single-select" | "total-summary">("main");
   const [selectedFortune, setSelectedFortune] = useState<SingleFortune>("wealth");
-  const [reportType, setReportType] = useState<ReportType>("wealth");
 
   const sajuData = useMemo(
     () =>
@@ -139,333 +82,252 @@ export default function GalleryOne() {
   );
 
   const selectedFortuneMeta = fortuneOptions.find((option) => option.id === selectedFortune) ?? fortuneOptions[0];
-  const currentMeta = reportMeta[reportType];
   const guardianDetails = getElementDetails(sajuData.missingElement as FiveElements);
-
-  const handleSelectSingle = (fortuneId: SingleFortune) => {
-    setSelectedFortune(fortuneId);
-    setReportType(fortuneId);
-  };
 
   return (
     <div className="mx-auto max-w-7xl px-6 pb-40 pt-40 sm:px-8 lg:px-12">
-      <div className="space-y-28">
-        <section className="grid gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center">
+      <div className="space-y-20">
+        {/* Step 1: Main (Product Selection) */}
+        {view === "main" && (
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-            className="space-y-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="space-y-24"
           >
-            <div className="space-y-5">
-              <p className="font-sans text-[11px] uppercase tracking-[0.46em] text-[rgba(62,54,42,0.52)]">
-                Exhibit No. 01
-              </p>
-              <h1 className="text-5xl leading-[1.18] tracking-[0.08em] text-[var(--color-ink-soft)] md:text-7xl">
-                나의 운명을 보다
-              </h1>
-              <p className="max-w-xl text-[16px] leading-8 text-[rgba(62,54,42,0.72)]">
-                가장 궁금한 흐름 하나를 먼저 관람할지, 올해의 결 전체를 한 번에 볼지 선택하는 제1전시실입니다.
-                상품을 고르는 것이 아니라, 지금의 운명을 어떤 방식으로 관람할지 정하는 경험에 가깝게 설계했습니다.
-              </p>
-            </div>
-
-            <div className="space-y-6 border-l border-[rgba(197,160,89,0.22)] pl-6">
-              <p className="text-xl italic leading-9 text-[rgba(62,54,42,0.88)]">
-                “지금은 확장보다 정리와 재정비가 중요한 시기입니다.”
-              </p>
-              <p className="max-w-lg text-[15px] leading-8 text-[rgba(62,54,42,0.68)]">
-                단일 리포트는 하나의 질문에 선명하게 답하고, 토탈 리포트는 흐름 전체의 맥락을 이어서 보여줍니다.
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.1, ease: "easeOut" }}
-            className="gallery-card relative overflow-hidden rounded-[2.2rem] p-5 shadow-[0_30px_70px_rgba(66,52,26,0.08)]"
-          >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.8rem]">
-              <Image
-                src={guardianDetails.image}
-                alt={guardianDetails.name}
-                fill
-                className="object-cover grayscale-[0.18]"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(248,245,240,0.02),rgba(248,245,240,0.62))]" />
-              <div className="absolute inset-5 rounded-[1.5rem] border border-white/40" />
-              <div className="absolute bottom-8 left-8 max-w-sm space-y-3">
-                <p className="font-sans text-[10px] uppercase tracking-[0.36em] text-[rgba(255,248,236,0.72)]">
-                  Curated Fate Preview
-                </p>
-                <p className="text-2xl leading-9 text-white/90">
-                  {guardianDetails.guardianTitle}
-                </p>
-                <p className="text-sm leading-7 text-white/72">
-                  {guardianDetails.guardianDesc}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </section>
-
-        <section className="grid gap-8 lg:grid-cols-2">
-          <motion.button
-            type="button"
-            onClick={() => handleSelectSingle(selectedFortune)}
-            whileHover={{ y: -4 }}
-            className={`gallery-card rounded-[2rem] border p-8 text-left transition-all duration-300 ${
-              reportType !== "total"
-                ? "border-[rgba(197,160,89,0.58)] shadow-[0_24px_50px_rgba(89,71,36,0.08)]"
-                : "border-[rgba(197,160,89,0.16)]"
-            }`}
-          >
-            <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-[rgba(62,54,42,0.54)]">
-              가볍게 하나만 보고 싶다면
-            </p>
-            <div className="mt-5 flex items-start justify-between gap-4">
-              <div className="space-y-3">
-                <h2 className="text-3xl leading-tight text-[var(--color-ink-soft)]">단일 운세 리포트</h2>
-                <p className="max-w-md text-[15px] leading-8 text-[rgba(62,54,42,0.68)]">
-                  지금 가장 궁금한 한 영역만 골라, 핵심 흐름과 보완 포인트를 정제해 보여줍니다.
-                </p>
-              </div>
-              <p className="font-sans text-xl tracking-[0.08em] text-[rgba(128,97,36,0.92)]">₩4,900</p>
-            </div>
-          </motion.button>
-
-          <motion.button
-            type="button"
-            onClick={() => setReportType("total")}
-            whileHover={{ y: -4 }}
-            className={`gallery-card relative rounded-[2rem] border p-8 text-left transition-all duration-300 ${
-              reportType === "total"
-                ? "border-[rgba(197,160,89,0.72)] shadow-[0_26px_56px_rgba(89,71,36,0.1)]"
-                : "border-[rgba(197,160,89,0.16)]"
-            }`}
-          >
-            <div className="absolute right-8 top-8 rounded-full border border-[rgba(197,160,89,0.3)] bg-[rgba(197,160,89,0.08)] px-4 py-2">
-              <span className="font-sans text-[10px] uppercase tracking-[0.34em] text-[rgba(128,97,36,0.92)]">Best</span>
-            </div>
-            <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-[rgba(62,54,42,0.54)]">
-              내 흐름을 전체적으로 보고 싶다면
-            </p>
-            <div className="mt-5 flex items-start justify-between gap-4">
-              <div className="space-y-3">
-                <h2 className="text-3xl leading-tight text-[var(--color-ink-soft)]">토탈 운세 리포트</h2>
-                <p className="max-w-md text-[15px] leading-8 text-[rgba(62,54,42,0.68)]">
-                  다섯 가지 운세와 시기 운, 월별 흐름까지 한 번에 이어 보는 프리미엄 리포트입니다.
-                </p>
-              </div>
-              <p className="font-sans text-xl tracking-[0.08em] text-[rgba(128,97,36,0.92)]">₩9,900</p>
-            </div>
-          </motion.button>
-        </section>
-
-        <section className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-          <div className="gallery-card rounded-[2rem] p-8">
-            <div className="space-y-4">
-              <p className="font-sans text-[11px] uppercase tracking-[0.38em] text-[rgba(62,54,42,0.52)]">
-                단일 리포트 선택
-              </p>
-              <h3 className="text-3xl leading-tight text-[var(--color-ink-soft)]">
-                지금 가장 궁금한 영역 하나를 고르세요
-              </h3>
-              <p className="text-[15px] leading-8 text-[rgba(62,54,42,0.66)]">
-                선택값은 `selectedFortune`과 `reportType`에 저장되는 구조로 맞췄습니다.
-              </p>
-            </div>
-
-            <div className="mt-8 grid gap-3">
-              {fortuneOptions.map((option) => {
-                const active = selectedFortune === option.id && reportType !== "total";
-
-                return (
-                  <button
-                    key={option.id}
-                    type="button"
-                    onClick={() => handleSelectSingle(option.id)}
-                    className={`rounded-[1.4rem] border px-5 py-5 text-left transition-all ${
-                      active
-                        ? "border-[rgba(197,160,89,0.64)] bg-[rgba(255,251,244,0.92)] shadow-[0_18px_34px_rgba(89,71,36,0.06)]"
-                        : "border-[rgba(197,160,89,0.14)] bg-white/55"
-                    }`}
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="space-y-1">
-                        <p className="text-xl text-[var(--color-ink-soft)]">{option.label}</p>
-                        <p className="text-sm text-[rgba(62,54,42,0.58)]">{option.subtitle}</p>
-                      </div>
-                      {active ? <Check className="h-5 w-5 text-[rgba(128,97,36,0.92)]" /> : null}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="gallery-card rounded-[2rem] p-8">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="space-y-2">
-                <p className="font-sans text-[11px] uppercase tracking-[0.38em] text-[rgba(62,54,42,0.52)]">
-                  현재 선택
-                </p>
-                <h3 className="text-3xl leading-tight text-[var(--color-ink-soft)]">{currentMeta.title}</h3>
-                <p className="text-[15px] leading-8 text-[rgba(62,54,42,0.66)]">{currentMeta.intro}</p>
-              </div>
-              <div className="text-right">
-                <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.46)]">
-                  저장값
-                </p>
-                <p className="mt-2 font-sans text-lg tracking-[0.08em] text-[rgba(128,97,36,0.94)]">
-                  reportType: {reportType}
-                </p>
-                {reportType !== "total" ? (
-                  <p className="mt-1 font-sans text-sm tracking-[0.08em] text-[rgba(62,54,42,0.58)]">
-                    selectedFortune: {selectedFortune}
+            <section className="grid gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center">
+              <div className="space-y-10">
+                <div className="space-y-5">
+                  <p className="font-sans text-[11px] uppercase tracking-[0.46em] text-[rgba(62,54,42,0.52)]">
+                    Exhibit No. 01
                   </p>
-                ) : null}
-              </div>
-            </div>
-
-            <div className="mt-8 rounded-[1.5rem] border border-[rgba(197,160,89,0.16)] bg-white/60 p-6">
-              <p className="text-lg leading-8 text-[rgba(62,54,42,0.82)]">{currentMeta.summary}</p>
-              {reportType !== "total" ? (
-                <div className="mt-5 space-y-3">
-                  <p className="font-sans text-[11px] uppercase tracking-[0.32em] text-[rgba(62,54,42,0.5)]">
-                    선택 해석 포인트
+                  <h1 className="text-5xl leading-[1.18] tracking-[0.08em] text-[var(--color-ink-soft)] md:text-7xl">
+                    나의 운명을 보다
+                  </h1>
+                  <p className="max-w-xl text-[16px] leading-8 text-[rgba(62,54,42,0.72)]">
+                    제1전시실은 사주를 단순한 점술이 아닌 한 폭의 작품으로 읽어내는 공간입니다.
+                    가장 궁금한 흐름 하나에 집중할지, 내 삶의 전체적인 결을 조망할지 선택해 주세요.
                   </p>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedFortuneMeta.focus.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full border border-[rgba(197,160,89,0.18)] bg-[rgba(248,245,240,0.9)] px-4 py-2 text-sm text-[rgba(62,54,42,0.72)]"
-                      >
-                        {item}
-                      </span>
-                    ))}
+                </div>
+              </div>
+
+              <div className="gallery-card relative overflow-hidden rounded-[2.2rem] p-5 shadow-[0_30px_70px_rgba(66,52,26,0.08)]">
+                <div className="relative aspect-[16/9] overflow-hidden rounded-[1.8rem] sm:aspect-[21/9]">
+                  <Image
+                    src={guardianDetails.image}
+                    alt={guardianDetails.name}
+                    fill
+                    className="object-cover grayscale-[0.2] opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(248,245,240,0.8)] to-transparent" />
+                  <div className="absolute bottom-6 left-8">
+                    <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-[rgba(62,54,42,0.5)]">Entrance</p>
+                    <p className="mt-1 text-xl tracking-[0.1em] text-[var(--color-ink-soft)]">전시관 입장</p>
                   </div>
                 </div>
-              ) : null}
-            </div>
+              </div>
+            </section>
 
-            <Link
-              href={`/result?kind=gallery1&reportType=${reportType}&selectedFortune=${selectedFortune}&birthDate=1990-01-01&birthTime=12:00&calendarType=solar&gender=male`}
-              className="hero-cta mt-8 inline-flex w-full items-center justify-center gap-3 rounded-full px-7 py-4"
-            >
-              <span className="font-sans text-[11px] uppercase tracking-[0.38em]">
-                {reportType === "total" ? "토탈 리포트 결과 미리보기" : `${selectedFortuneMeta.label} 결과 미리보기`}
-              </span>
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </section>
-
-        <section className="grid gap-8 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)]">
-          <div className="gallery-card rounded-[2rem] p-8">
-            <div className="space-y-4">
-              <p className="font-sans text-[11px] uppercase tracking-[0.38em] text-[rgba(62,54,42,0.52)]">
-                기본 사주 요약
-              </p>
-              <h3 className="text-3xl leading-tight text-[var(--color-ink-soft)]">
-                너무 전문적이지 않게, 그러나 빠짐없이
-              </h3>
-            </div>
-
-            <div className="mt-8 grid grid-cols-2 gap-4">
-              {sajuData.pillarsForDisplay.map((pillar) => (
-                <div key={pillar.label} className="rounded-[1.4rem] border border-[rgba(197,160,89,0.14)] bg-white/60 p-5">
-                  <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.48)]">
-                    {pillar.label}주
+            <section className="grid gap-8 lg:grid-cols-2">
+              <motion.div
+                whileHover={{ y: -8 }}
+                className="gallery-card flex flex-col justify-between rounded-[2.2rem] border border-[rgba(197,160,89,0.18)] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(89,71,36,0.12)]"
+              >
+                <div className="space-y-6">
+                  <p className="font-sans text-[11px] uppercase tracking-[0.45em] text-[rgba(128,97,36,0.6)]">Single Exhibition</p>
+                  <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">단일 운세 리포트</h2>
+                  <p className="max-w-sm text-[16px] leading-8 text-[rgba(62,54,42,0.65)]">
+                    재물, 연애, 직장 등 현재 가장 큰 에너지를 쓰고 있는 한 가지 주제에 대해 깊이 있는 통찰을 제공합니다.
                   </p>
-                  <p className="mt-2 text-3xl text-[var(--color-ink-soft)]">{pillar.hanja}</p>
-                  <p className="mt-1 text-sm tracking-[0.22em] text-[rgba(62,54,42,0.66)]">{pillar.hangeul}</p>
-                  <p className="mt-3 text-xs text-[rgba(62,54,42,0.56)]">오행 {pillar.element}</p>
+                  <p className="font-sans text-2xl tracking-[0.1em] text-[var(--color-gold)]">₩4,900</p>
                 </div>
-              ))}
-            </div>
-
-            <div className="mt-6 rounded-[1.4rem] border border-[rgba(197,160,89,0.14)] bg-white/60 p-5">
-              <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.48)]">오행 분포</p>
-              <div className="mt-4 grid grid-cols-5 gap-2">
-                {Object.entries(sajuData.fiveElementCount).map(([element, count]) => (
-                  <div key={element} className="rounded-xl bg-[rgba(248,245,240,0.9)] px-2 py-3 text-center">
-                    <p className="font-sans text-[10px] uppercase tracking-[0.18em] text-[rgba(62,54,42,0.48)]">{element}</p>
-                    <p className="mt-1 text-lg text-[var(--color-ink-soft)]">{count}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-4 text-sm leading-7 text-[rgba(62,54,42,0.72)]">
-                강한 오행: {sajuData.strongElements.join(", ")} / 부족한 오행: {sajuData.weakElements.join(", ")}
-              </p>
-            </div>
-          </div>
-
-          <div className="grid gap-8">
-            <div className="gallery-card rounded-[2rem] p-8">
-              <div className="flex items-center gap-3">
-                <Sparkles className="h-4 w-4 text-[rgba(128,97,36,0.84)]" />
-                <p className="font-sans text-[11px] uppercase tracking-[0.38em] text-[rgba(62,54,42,0.52)]">포함 내용 비교</p>
-              </div>
-
-              <div className="mt-8 grid gap-6 md:grid-cols-2">
-                <div className="rounded-[1.5rem] border border-[rgba(197,160,89,0.16)] bg-white/60 p-6">
-                  <p className="text-xl text-[var(--color-ink-soft)]">단일 운세 리포트</p>
-                  <p className="mt-2 font-sans text-sm tracking-[0.06em] text-[rgba(128,97,36,0.92)]">₩4,900</p>
-                  <div className="mt-5 space-y-3">
-                    {singleReportSections.map((item) => (
-                      <div key={item} className="flex gap-3 text-sm leading-7 text-[rgba(62,54,42,0.72)]">
-                        <Check className="mt-1 h-4 w-4 shrink-0 text-[rgba(128,97,36,0.9)]" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="rounded-[1.5rem] border border-[rgba(197,160,89,0.28)] bg-[rgba(255,251,244,0.9)] p-6">
-                  <p className="text-xl text-[var(--color-ink-soft)]">토탈 운세 리포트</p>
-                  <p className="mt-2 font-sans text-sm tracking-[0.06em] text-[rgba(128,97,36,0.92)]">₩9,900</p>
-                  <div className="mt-5 space-y-3">
-                    {totalReportSections.map((item) => (
-                      <div key={item} className="flex gap-3 text-sm leading-7 text-[rgba(62,54,42,0.72)]">
-                        <Check className="mt-1 h-4 w-4 shrink-0 text-[rgba(128,97,36,0.9)]" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid gap-8 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-              <div className="gallery-card rounded-[2rem] p-8">
-                <p className="font-sans text-[11px] uppercase tracking-[0.38em] text-[rgba(62,54,42,0.52)]">
-                  오늘의 한 줄 운세
-                </p>
-                <p className="mt-5 text-2xl italic leading-10 text-[rgba(62,54,42,0.9)]">
-                  “{selectedFortuneMeta.oneLine}”
-                </p>
-              </div>
-
-              <div className="gallery-card rounded-[2rem] p-8">
-                <p className="font-sans text-[11px] uppercase tracking-[0.38em] text-[rgba(62,54,42,0.52)]">
-                  부족한 오행 보완
-                </p>
-                <p className="mt-4 text-2xl leading-10 text-[var(--color-ink-soft)]">
-                  당신에게는 {guardianDetails.name.split("|")[0].trim()}의 기운을 조금 더 채우는 방향이 필요합니다.
-                </p>
-                <p className="mt-4 text-[15px] leading-8 text-[rgba(62,54,42,0.68)]">
-                  {guardianDetails.guardianDesc}
-                </p>
-                <button className="mt-6 inline-flex items-center gap-3 rounded-full border border-[rgba(197,160,89,0.26)] px-5 py-3 text-[rgba(128,97,36,0.92)] transition hover:bg-[rgba(197,160,89,0.06)]">
-                  <Download className="h-4 w-4" />
-                  <span className="font-sans text-[11px] uppercase tracking-[0.32em]">수묵화 이미지 다운로드</span>
+                <button
+                  type="button"
+                  onClick={() => setView("single-select")}
+                  className="hero-cta mt-12 flex w-full items-center justify-center gap-4 rounded-full py-5 transition-all"
+                >
+                  <span className="font-sans text-[12px] uppercase tracking-[0.4em]">전시 선택하기</span>
+                  <ArrowRight className="h-4 w-4" />
                 </button>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ y: -8 }}
+                className="gallery-card relative flex flex-col justify-between rounded-[2.2rem] border border-[rgba(197,160,89,0.3)] bg-[rgba(255,251,244,0.4)] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(89,71,36,0.14)]"
+              >
+                <div className="absolute right-10 top-10 rounded-full border border-[rgba(197,160,89,0.4)] bg-[rgba(197,160,89,0.1)] px-4 py-1.5">
+                  <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-[var(--color-gold)]">Signature</span>
+                </div>
+                <div className="space-y-6">
+                  <p className="font-sans text-[11px] uppercase tracking-[0.45em] text-[rgba(128,97,36,0.6)]">Total Collection</p>
+                  <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">토탈 운세 리포트</h2>
+                  <p className="max-w-sm text-[16px] leading-8 text-[rgba(62,54,42,0.65)]">
+                    삶의 다섯 가지 대운과 올해의 월별 흐름, 중요한 변화의 시기를 한 눈에 읽는 종합 큐레이션 전시입니다.
+                  </p>
+                  <p className="font-sans text-2xl tracking-[0.1em] text-[var(--color-gold)]">₩9,900</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setView("total-summary")}
+                  className="hero-cta mt-12 flex w-full items-center justify-center gap-4 rounded-full py-5 transition-all"
+                >
+                  <span className="font-sans text-[12px] uppercase tracking-[0.4em]">전체 흐름 보기</span>
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </motion.div>
+            </section>
+          </motion.div>
+        )}
+
+        {/* Step 2: Single Selection */}
+        {view === "single-select" && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-16"
+          >
+            <div className="flex flex-col items-center justify-between gap-6 border-b border-[rgba(197,160,89,0.15)] pb-10 sm:flex-row">
+              <div className="space-y-3">
+                <button 
+                  onClick={() => setView("main")}
+                  className="font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)] hover:text-[var(--color-gold)] transition-colors"
+                >
+                  ← 돌아가기
+                </button>
+                <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">리포트 종류 선택</h2>
+              </div>
+              <p className="font-sans text-xl tracking-[0.1em] text-[var(--color-gold)]">단일 리포트 · ₩4,900</p>
+            </div>
+
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+              <div className="space-y-4">
+                {fortuneOptions.map((option) => {
+                  const active = selectedFortune === option.id;
+                  return (
+                    <button
+                      key={option.id}
+                      onClick={() => setSelectedFortune(option.id)}
+                      className={`group w-full rounded-[1.8rem] border p-7 text-left transition-all duration-300 ${
+                        active
+                          ? "border-[rgba(197,160,89,0.6)] bg-[rgba(255,251,244,0.8)] shadow-[0_20px_40px_rgba(89,71,36,0.06)]"
+                          : "border-[rgba(197,160,89,0.15)] bg-white/40 hover:border-[rgba(197,160,89,0.3)]"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="space-y-2">
+                          <h3 className="text-2xl text-[var(--color-ink-soft)]">{option.label}</h3>
+                          <p className="text-[14px] text-[rgba(62,54,42,0.6)]">{option.subtitle}</p>
+                        </div>
+                        {active && <div className="h-2 w-2 rounded-full bg-[var(--color-gold)] shadow-[0_0_10px_rgba(197,160,89,0.5)]" />}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="gallery-card rounded-[2.2rem] p-10">
+                <div className="space-y-8">
+                  <div className="space-y-4">
+                    <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-[rgba(128,97,36,0.7)]">Selection Summary</p>
+                    <h3 className="text-3xl text-[var(--color-ink-soft)]">{selectedFortuneMeta.label} 리포트</h3>
+                    <p className="text-[16px] leading-8 text-[rgba(62,54,42,0.7)]">
+                      {selectedFortuneMeta.oneLine}
+                    </p>
+                  </div>
+
+                  <div className="space-y-5 rounded-[1.8rem] border border-[rgba(197,160,89,0.15)] bg-[rgba(248,245,240,0.6)] p-8">
+                    <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)]">주요 관람 포인트</p>
+                    <div className="grid gap-3">
+                      {selectedFortuneMeta.focus.map((item) => (
+                        <div key={item} className="flex items-center gap-3 text-[15px] text-[rgba(62,54,42,0.75)]">
+                          <Check className="h-4 w-4 text-[var(--color-gold)]" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Link
+                    href={`/result?kind=gallery1&reportType=${selectedFortune}&selectedFortune=${selectedFortune}&birthDate=1990-01-01&birthTime=12:00&calendarType=solar&gender=male`}
+                    className="hero-cta flex w-full items-center justify-center gap-4 rounded-full py-5"
+                  >
+                    <span className="font-sans text-[12px] uppercase tracking-[0.4em]">결과 미리보기</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </motion.div>
+        )}
+
+        {/* Step 2: Total Summary */}
+        {view === "total-summary" && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-16"
+          >
+            <div className="flex flex-col items-center justify-between gap-6 border-b border-[rgba(197,160,89,0.15)] pb-10 sm:flex-row">
+              <div className="space-y-3">
+                <button 
+                  onClick={() => setView("main")}
+                  className="font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.5)] hover:text-[var(--color-gold)] transition-colors"
+                >
+                  ← 돌아가기
+                </button>
+                <h2 className="text-4xl tracking-[0.05em] text-[var(--color-ink-soft)]">토탈 리포트 구성</h2>
+              </div>
+              <p className="font-sans text-xl tracking-[0.1em] text-[var(--color-gold)]">₩9,900</p>
+            </div>
+
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+              <div className="gallery-card rounded-[2.2rem] p-10">
+                <div className="grid gap-10 sm:grid-cols-2">
+                  <div className="space-y-6">
+                    <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-[rgba(128,97,36,0.7)]">Overview</p>
+                    <div className="space-y-4">
+                      {totalReportSections.slice(0, 4).map((item) => (
+                        <div key={item} className="flex gap-4 text-[15px] leading-7 text-[rgba(62,54,42,0.75)]">
+                          <Check className="mt-1 h-4 w-4 shrink-0 text-[var(--color-gold)]" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="space-y-6 sm:mt-11">
+                    <div className="space-y-4">
+                      {totalReportSections.slice(4).map((item) => (
+                        <div key={item} className="flex gap-4 text-[15px] leading-7 text-[rgba(62,54,42,0.75)]">
+                          <Check className="mt-1 h-4 w-4 shrink-0 text-[var(--color-gold)]" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-8">
+                <div className="gallery-card rounded-[2.2rem] p-8 text-center border-dashed border-[rgba(197,160,89,0.3)]">
+                  <p className="text-[16px] leading-8 text-[rgba(62,54,42,0.7)]">
+                    "모든 운의 결을 하나로 잇고,<br />가장 강력한 타이밍을 선별해 드립니다."
+                  </p>
+                </div>
+
+                <Link
+                  href={`/result?kind=gallery1&reportType=total&birthDate=1990-01-01&birthTime=12:00&calendarType=solar&gender=male`}
+                  className="hero-cta flex w-full items-center justify-center gap-4 rounded-full py-6 shadow-[0_20px_40px_rgba(197,160,89,0.15)]"
+                >
+                  <span className="font-sans text-[13px] uppercase tracking-[0.5em]">토탈 결과 미리보기</span>
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
+
+                <p className="text-center font-sans text-[10px] uppercase tracking-[0.3em] text-[rgba(62,54,42,0.4)]">
+                  Premium curation for your entire year
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
       </div>
     </div>
   );
