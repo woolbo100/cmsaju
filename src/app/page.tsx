@@ -47,8 +47,8 @@ export default function Home() {
           <Image
             src="/image/obj.png"
             alt="천명갤러리 엠블럼"
-            width={120}
-            height={180}
+            width={80}
+            height={120}
             className="enso-gold-foil object-contain"
           />
         </div>

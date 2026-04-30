@@ -312,11 +312,9 @@ a {
 .hanging-emblem-string {
   width: 2px;
   height: 100px;
-  background: linear-gradient(
-    to bottom,
-    #D4AF37 0%,
-    #C5A059 100%
-  );
+  background: linear-gradient(to bottom,
+      #D4AF37 0%,
+      #C5A059 100%);
   box-shadow: 0 0 6px rgba(197, 160, 89, 0.4);
   opacity: 0.9;
 }
@@ -335,18 +333,15 @@ a {
   position: relative;
   width: 100%;
   height: auto;
-  aspect-ratio: 2 / 3;
   margin-top: -2px;
-  background: #1a1a1a;
-  border-radius: 2px;
-  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.2));
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   cursor: pointer;
   pointer-events: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px; /* Slightly reduced padding */
+  overflow: visible;
 }
 
 .hanging-emblem-card::before {
