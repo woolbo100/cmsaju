@@ -176,8 +176,8 @@ export default function GalleryTwo() {
               <div className="gallery-card relative overflow-hidden rounded-[2.2rem] p-5 shadow-[0_30px_70px_rgba(66,52,26,0.08)]">
                 <div className="relative aspect-[16/9] overflow-hidden rounded-[1.8rem] sm:aspect-[21/9]">
                   <Image
-                    src="/assets/rel_water_wood.png"
-                    alt="Relationship Art"
+                    src="/image/main3.png"
+                    alt="제 2 전시실 배경"
                     fill
                     className="object-cover grayscale-[0.2] opacity-80"
                   />
