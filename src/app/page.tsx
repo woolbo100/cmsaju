@@ -43,7 +43,7 @@ export default function Home() {
       <div className="hanging-emblem-container flex">
         <div className="hanging-emblem-string" />
         <div className="hanging-emblem-bead" />
-        <div className="hanging-emblem-card w-20 sm:w-24">
+        <div className="hanging-emblem-card w-16 sm:w-20">
           <Image
             src="/image/obj.png"
             alt="천명갤러리 엠블럼"
