@@ -39,21 +39,22 @@ export default function Home() {
 
   return (
     <>
-      <section className="hero-stage relative isolate min-h-screen overflow-hidden bg-[var(--color-hanji)] pt-24">
-        <div className="hanging-emblem-container flex">
-          <div className="hanging-emblem-string" />
-          <div className="hanging-emblem-bead" />
-          <div className="hanging-emblem-card w-20 sm:w-24">
-            <Image
-              src="/image/obj.png"
-              alt="천명갤러리 엠블럼"
-              width={120}
-              height={180}
-              className="enso-gold-foil object-contain"
-            />
-          </div>
+      {/* Hanging Emblem Component - Root Level for maximum visibility */}
+      <div className="hanging-emblem-container flex">
+        <div className="hanging-emblem-string" />
+        <div className="hanging-emblem-bead" />
+        <div className="hanging-emblem-card w-20 sm:w-24">
+          <Image
+            src="/image/obj.png"
+            alt="천명갤러리 엠블럼"
+            width={120}
+            height={180}
+            className="enso-gold-foil object-contain"
+          />
         </div>
+      </div>
 
+      <section className="hero-stage relative isolate min-h-screen overflow-hidden bg-[var(--color-hanji)] pt-24">
         <div className="pointer-events-none absolute inset-0">
           <div className="hero-paper absolute inset-0" />
           <div className="hero-landscape-overlay absolute inset-0">
