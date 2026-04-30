@@ -51,12 +51,6 @@ export default function Home() {
               className="object-cover object-center"
             />
           </div>
-          <div className="hero-mist hero-mist-top absolute -left-[10%] top-[15%] h-[32rem] w-[40rem] rounded-full" />
-          <div className="hero-mist hero-mist-bottom absolute -right-[12%] bottom-[15%] h-[28rem] w-[38rem] rounded-full" />
-          <div className="hero-gold-cloud hero-gold-cloud-left absolute left-[6%] top-[20%] h-44 w-60" />
-          <div className="hero-gold-cloud hero-gold-cloud-right absolute right-[8%] top-[28%] h-48 w-64" />
-          <div className="hero-brush hero-brush-left absolute left-0 top-32 h-[30rem] w-48" />
-          <div className="hero-brush hero-brush-right absolute right-0 top-44 h-[26rem] w-42" />
           <div className="hero-gold-dust absolute inset-x-0 top-0 h-full" />
           
           {/* Subtle Background Seal Points */}
